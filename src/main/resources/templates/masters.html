@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Мастера</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/styles/style.css}">
+</head>
+<body>
+<div class="wrapper">
+  <div th:insert="blocks/header :: header"></div>
+  <div class="main">
+    <div class="service-header masters-header">
+      <div class="container d-flex justify-content-center align-items-center">
+        <h2>Наши мастера</h2>
+      </div>
+    </div>
+    <div class="services-content">
+      <div class="container text-center">
+        <img src="/img/beauty-mania.jpg" alt="">
+        <div class="contacts-description">
+          <p class="my-2">Мы существуем для того, чтобы дарить красоту людям, и уверены, что каждый человек может стать еще красивее и чуточку счастливей, придя к нам. Мы работаем над своим профессионализмом, и, не смотря на достигнутые нами результаты, стремимся их превзойти. Мы рады искренней благодарности за нашу работу, потому что вкладываем душу в каждого. Мы хотим, чтобы любой клиент нашел в наших салонах своих любимых мастеров и свои любимые процедуры. Мы по праву гордимся широким спектром услуг, которые способны предложить.</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-baseline">
+          <h6 style="text-align: left; margin-bottom: 20px">Мастера по специализациям:</h6>
+          <div class="parameters dropdown">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Параметры
+            </a>
+            <div class="dropdown-menu">
+              <form class="m-3" th:action="@{/masters/sort}">
+                <div class="input-box field">
+                  <label>Раздел: </label>
+                  <select name="section" required>
+                    <option value="Все">Все</option>
+                    <option value="Волосы">Волосы</option>
+                    <option value="Ресницы">Ресницы</option>
+                    <option value="Брови">Брови</option>
+                    <option value="Уход за кожей">Уход за кожей</option>
+                    <option value="Массаж">Массаж</option>
+                    <option value="Ногти">Ногти</option>
+                  </select>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <label>По алфавиту:</label>
+                  <div>
+                    <div class="d-flex justify-content-between">
+                      <label>По возрастанию </label>
+                      <input class="mx-2" name="alphabet" type="radio" value="asc">
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                      <label>По убыванию </label>
+                      <input class="mx-2" name="alphabet" type="radio" value="desc">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <label>По рейтингу:</label>
+                  <div>
+                    <div class="d-flex justify-content-between">
+                      <label>Наиболее популярные </label>
+                      <input class="mx-2" name="rating" type="radio" value="asc">
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                      <label>Наименее популярные </label>
+                      <input class="mx-2" name="rating" type="radio" value="desc">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="btn my-2" style="border: 1px solid black">Применить</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="table">
+          <span class="filtered" th:if="${filtered}"></span>
+          <div class="chapter" th:if="${section==null || section.equals('Волосы') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Волосы</h5>
+            </div>
+            <div class="table-row d-block" th:each="el : ${mastersList}" th:if="${el.section.equals('Волосы')}">
+              <p class="service" th:text="${el.name}"/>
+              <p class="service" th:text="${el.surname}"/>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Ресницы') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Ресницы</h5>
+            </div>
+            <div class="table-row d-block" th:each="el : ${mastersList}" th:if="${el.section.equals('Ресницы')}">
+              <p class="service" th:text="${el.name}"/>
+              <p class="service" th:text="${el.surname}"/>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Брови') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Брови</h5>
+            </div>
+            <div class="table-row d-block" th:each="el : ${mastersList}" th:if="${el.section.equals('Брови')}">
+              <p class="service" th:text="${el.name}"/>
+              <p class="service" th:text="${el.surname}"/>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Уход за кожей') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Уход за кожей</h5>
+            </div>
+            <div class="table-row d-block" th:each="el : ${mastersList}" th:if="${el.section.equals('Уход за кожей')}">
+              <p class="service" th:text="${el.name}"/>
+              <p class="service" th:text="${el.surname}"/>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Массаж') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Массаж</h5>
+            </div>
+            <div class="table-row d-block" th:each="el : ${mastersList}" th:if="${el.section.equals('Массаж')}">
+              <p class="service" th:text="${el.name}"/>
+              <p class="service" th:text="${el.surname}"/>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Ногти') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Ногти</h5>
+            </div>
+            <div class="table-row d-block" th:each="el : ${mastersList}" th:if="${el.section.equals('Ногти')}">
+              <p class="service" th:text="${el.name}"/>
+              <p class="service" th:text="${el.surname}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div th:insert="blocks/footer :: footer"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="/scripts/services.js"></script>
+</body>
+</html>

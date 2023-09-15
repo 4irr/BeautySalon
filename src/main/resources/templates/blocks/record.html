@@ -1,0 +1,40 @@
+<div class="record" th:fragment="record">
+  <form th:action="'/services/' + ${section} + '/record'" method="post">
+    <div class="input-box field">
+      <label>Услуга: </label>
+      <select name="service" required>
+        <option th:each="el : ${serviceList}" th:if="${el.getSection().equals(map.get(section))}" th:value="${el.getServiceId()}" th:text="${el.name}"/>
+      </select>
+    </div>
+    <div class="input-box field">
+      <label>Мастер: </label>
+      <select name="master" required>
+        <option th:each="el : ${masters}" th:if="${el.getSection().equals(map.get(section))}" th:value="${el.getUserID()}" th:text="${el.name} + ' ' + ${el.surname}"/>
+      </select>
+    </div>
+    <div class="input-box field">
+      <label>Дата:</label>
+      <input type="date" name="date" required>
+    </div>
+    <div class="input-box field">
+      <label>Время: </label>
+      <select name="time" required>
+        <option value="09:00">09:00</option>
+        <option value="10:00">10:00</option>
+        <option value="11:00">11:00</option>
+        <option value="12:00">12:00</option>
+        <option value="13:00">13:00</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
+        <option value="18:00">18:00</option>
+        <option value="19:00">19:00</option>
+        <option value="20:00">20:00</option>
+      </select>
+    </div>
+    <p class="isSuccess" th:if="${exists}" th:text="${exists}" style="text-align: center"/>
+    <p class="isSuccess" th:if="${notClient}" th:text="${notClient}" style="text-align: center"/>
+    <button type="submit" class="btn">Записаться</button>
+  </form>
+</div>

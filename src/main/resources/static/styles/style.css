@@ -1,0 +1,380 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main {
+    flex: 1 0 auto;
+    background: url(../img/background.jpg) no-repeat fixed;
+}
+
+.description {
+    background: url(../img/massage-slider.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+}
+
+.description .logo {
+    text-align: center;
+    transform: translateX(-40%);
+}
+
+.about {
+    padding: 70px 0;
+    color: #e4e4e4;
+    text-align: center;
+    font-size: 22px;
+    line-height: 35px;
+}
+
+.procedures {
+    padding: 50px 0;
+    background-color: white;
+}
+
+.procedures h2 {
+    position: relative;
+}
+
+.procedures h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #e4e4e4;
+    border-radius: 5px;
+    bottom: -20px;
+}
+
+.procedures .col {
+    color: white;
+    text-align: center;
+    height: 300px;
+    margin: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-size 0.5s ease;
+}
+
+.procedures .col:hover {
+    background-size: 110% 110%;
+}
+
+.procedures .hair {
+    background: url(../img/hair.jpg) no-repeat center;
+    background-size: 100% 100%;
+}
+
+.procedures .lashes {
+    background: url(../img/lashes.jpg) no-repeat center;
+    background-size: 100% 100%;
+}
+
+.procedures .brows {
+    background: url(../img/brows.jpg) no-repeat center;
+    background-size: 100% 100%;
+}
+
+.procedures .skin {
+    background: url(../img/skin.jpg) no-repeat center;
+    background-size: 100% 100%;
+}
+
+.procedures .massage {
+    background: url(../img/massage.jpg) no-repeat center;
+    background-size: 100% 100%;
+}
+
+.procedures .nails {
+    background: url(../img/nailservice.jpg) no-repeat center;
+    background-size: 100% 100%;
+}
+
+#log-in button {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    background: transparent;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: black;
+    border: none;
+}
+
+#log-in i {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.input-box {
+    margin: 20px 0;
+}
+
+.input-box input {
+    padding: 5px 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.input-box input:focus {
+    outline: none;
+    box-shadow: 0 0 10px 0px lightblue;
+}
+
+.input-box select {
+    padding: 5px 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.input-box select:focus {
+    outline: none;
+    box-shadow: 0 0 10px 0px lightblue;
+}
+
+#out {
+    padding: 10px;
+}
+
+#out button {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    background: transparent;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: black;
+    border: none;
+}
+
+#out i {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.contacts-header {
+    color: white;
+    background: url(../img/background_2.jpg) no-repeat center;
+    background-size: cover;
+    padding: 80px;
+}
+
+.contacts-header h2 {
+    font-weight: 400;
+}
+
+.contacts-content {
+    padding: 30px 0;
+    background-color: white;
+}
+
+.contacts-content img {
+    width: 100%;
+}
+
+.contacts-description {
+    color: #e4e4e4;
+    text-align: justify;
+    font-size: 18px;
+    margin: 40px 0;
+    padding: 20px;
+    background: linear-gradient(90deg, #000000,#230b10,#331016,#230b10,#000000);
+}
+
+.service-header {
+    color: white;
+    background-size: cover;
+    padding: 120px;
+}
+
+.service-header h2 {
+    font-weight: 400;
+}
+
+.hair-header {
+    background: url(../img/background_3.jpg) no-repeat center;
+}
+
+
+.services-content {
+    padding: 30px 0;
+    background-color: white;
+}
+
+.services-content img {
+    width: 100%;
+}
+
+.services-content p {
+    margin: 40px 0;
+    text-align: justify;
+}
+
+.table {
+    padding: 0 20px 20px 20px;
+    border: 1px solid lightgray;
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.table-row p {
+    padding: 0;
+    margin: 0;
+}
+
+.table-row .service {
+    padding-left: 20px;
+}
+
+.table-row a {
+    color: black;
+    padding: 0;
+    margin: 0;
+}
+
+.administration-buttons a {
+    display: inline-block;
+    color: gray;
+    margin: 10px 0;
+}
+
+.isSuccess {
+    color: red;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.field input, select {
+    margin-left: 30px;
+    width: 250px;
+}
+
+.services-header {
+    color: white;
+    background: url(../img/background_4.jpg) no-repeat center;
+    background-size: cover;
+    padding: 120px;
+}
+
+.services-header h2 {
+    font-weight: 400;
+}
+
+.details-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-buttons a {
+    color: black;
+}
+
+.details-buttons button {
+    border: none;
+    background-color: transparent;
+    color: black;
+}
+
+.services-content {
+    padding: 30px 0;
+    background-color: white;
+}
+
+.parameters {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.record {
+    display: none;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+    margin: 30px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#record-btn {
+    display: flex;
+    align-items: center;
+}
+
+.open {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.lashes-header {
+    background: url(../img/background_5.jpg) no-repeat center;
+}
+
+.brows-header {
+    background: url(../img/background_6.jpg) no-repeat center;
+}
+
+.skin-header {
+    background: url(../img/background_3.jpg) no-repeat center;
+}
+
+.massage-header {
+    background: url(../img/background_5.jpg) no-repeat center;
+}
+
+.nails-header {
+    background: url(../img/background_6.jpg) no-repeat center;
+}
+
+.masters-header {
+    background: url(../img/background_6.jpg) no-repeat center;
+}
+
+.profile-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-header h4 {
+    text-align: center;
+    margin: 5px 0 30px 0;
+}

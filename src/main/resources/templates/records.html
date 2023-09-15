@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Записи</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/styles/style.css}">
+</head>
+<body>
+<div class="wrapper">
+  <div th:insert="blocks/header :: header"></div>
+  <div class="main">
+    <div class="services-header">
+      <div class="container d-flex justify-content-center align-items-center">
+        <h2>Записи</h2>
+      </div>
+    </div>
+    <div class="services-content">
+      <div class="container text-center">
+        <div class="d-flex justify-content-between">
+          <h6 style="text-align: left; margin-bottom: 20px">Записи по разделам:</h6>
+          <div class="parameters dropdown">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Параметры
+            </a>
+            <div class="dropdown-menu">
+              <form class="m-3" th:action="@{/administration/records/sort}">
+                <div class="input-box field">
+                  <label>Раздел: </label>
+                  <select name="section" required>
+                    <option value="Все">Все</option>
+                    <option value="Волосы">Волосы</option>
+                    <option value="Ресницы">Ресницы</option>
+                    <option value="Брови">Брови</option>
+                    <option value="Уход за кожей">Уход за кожей</option>
+                    <option value="Массаж">Массаж</option>
+                    <option value="Ногти">Ногти</option>
+                  </select>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <label class="col">Дата:</label>
+                  <div>
+                    <div class="d-flex justify-content-between">
+                      <label>По возрастанию </label>
+                      <input class="mx-2" name="date" type="radio" value="asc">
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                      <label>По убыванию </label>
+                      <input class="mx-2" name="date" type="radio" value="desc">
+                    </div>
+                  </div>
+                </div>
+                <div class="input-box field align-items-start">
+                  <label>Дата: </label>
+                  <div class="d-flex flex-column">
+                    <div class="d-flex justify-content-between">
+                      <label>От:</label>
+                      <input name="from" type="date" style="width: 210px; margin-left: 20px">
+                    </div>
+                    <div>
+                      <label>До:</label>
+                      <input name="to" type="date" style="width: 210px; margin-left: 20px; margin-top: 20px">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="btn my-2" style="border: 1px solid black">Применить</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="table">
+          <div class="chapter" th:if="${section==null || section.equals('Волосы') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Волосы</h5>
+            </div>
+            <div class="table-row" th:each="el : ${recordList}" th:if="${el.service.section.equals('Волосы')}">
+              <a th:href="'/administration/records/' + ${el.recordId} + '/details'">
+                <p class="service" th:text="'Дата: ' + ${el.date}"/>
+                <p class="service" th:text="'Время: ' + ${el.time}"/>
+              </a>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Ресницы') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Ресницы</h5>
+            </div>
+            <div class="table-row" th:each="el : ${recordList}" th:if="${el.service.section.equals('Ресницы')}">
+              <a th:href="'/administration/records/' + ${el.recordId} + '/details'">
+                <p class="service" th:text="'Дата: ' + ${el.date}"/>
+                <p class="service" th:text="'Время: ' + ${el.time}"/>
+              </a>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Брови') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Брови</h5>
+            </div>
+            <div class="table-row" th:each="el : ${recordList}" th:if="${el.service.section.equals('Брови')}">
+              <a th:href="'/administration/records/' + ${el.recordId} + '/details'">
+                <p class="service" th:text="'Дата: ' + ${el.date}"/>
+                <p class="service" th:text="'Время: ' + ${el.time}"/>
+              </a>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Уход за кожей') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Уход за кожей</h5>
+            </div>
+            <div class="table-row" th:each="el : ${recordList}" th:if="${el.service.section.equals('Уход за кожей')}">
+              <a th:href="'/administration/records/' + ${el.recordId} + '/details'">
+                <p class="service" th:text="'Дата: ' + ${el.date}"/>
+                <p class="service" th:text="'Время: ' + ${el.time}"/>
+              </a>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Массаж') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Массаж</h5>
+            </div>
+            <div class="table-row" th:each="el : ${recordList}" th:if="${el.service.section.equals('Массаж')}">
+              <a th:href="'/administration/records/' + ${el.recordId} + '/details'">
+                <p class="service" th:text="'Дата: ' + ${el.date}"/>
+                <p class="service" th:text="'Время: ' + ${el.time}"/>
+              </a>
+            </div>
+          </div>
+          <div class="chapter" th:if="${section==null || section.equals('Ногти') || section.equals('Все')}">
+            <div class="table-row">
+              <h5 class="m-0 p-0">Ногти</h5>
+            </div>
+            <div class="table-row" th:each="el : ${recordList}" th:if="${el.service.section.equals('Ногти')}">
+              <a th:href="'/administration/records/' + ${el.recordId} + '/details'">
+                <p class="service" th:text="'Дата: ' + ${el.date}"/>
+                <p class="service" th:text="'Время: ' + ${el.time}"/>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div th:insert="blocks/footer :: footer"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+</head>
+<body>
+    <div class="wrapper">
+      <div th:insert="blocks/header :: header"></div>
+      <div class="main" style="background: white">
+        <div class="container">
+          <div class="profile-header">
+            <h4 th:if="${userProfile.getClass().getSimpleName().equals('Master')}">Мастер</h4>
+            <h4 th:if="${userProfile.getClass().getSimpleName().equals('Admin')}">Администратор</h4>
+            <h4 th:if="${userProfile.getClass().getSimpleName().equals('Client')}">Клиент</h4>
+            <p class="my-4 text-success" th:if="${success}" th:text="${success}"/>
+          </div>
+          <div class="profile-content">
+            <div>
+              <a class="btn p-0 my-3" href="/profile/edit">Редактировать</a><br>
+              <a class="btn p-0" href="/change-password">Сменить пароль</a>
+              <a class="btn p-0 my-3" th:if="${userProfile.getClass().getSimpleName().equals('Master')}" href="/master/records">Мои записи</a>
+              <a class="btn p-0 my-3" th:if="${userProfile.getClass().getSimpleName().equals('Client')}" href="/client/records">Мои записи</a>
+            </div>
+            <div class="table" style="width: 1100px">
+              <div class="chapter">
+                <div class="table-row">
+                  <h5 class="m-0 p-0">Имя</h5>
+                </div>
+                <div class="table-row">
+                  <p class="service" th:text="${userProfile.name}"/>
+                </div>
+                <div class="table-row">
+                  <h5 class="m-0 p-0">Фамилия</h5>
+                </div>
+                <div class="table-row">
+                  <p class="service" th:text="${userProfile.surname}"/>
+                </div>
+                <div class="table-row">
+                  <h5 class="m-0 p-0">Email</h5>
+                </div>
+                <div class="table-row">
+                  <p class="service" th:text="${userProfile.email}"/>
+                </div>
+                <div class="table-row">
+                  <h5 class="m-0 p-0">Номер телефона</h5>
+                </div>
+                <div class="table-row">
+                  <p class="service" th:text="${userProfile.telNum}"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div th:insert="blocks/footer :: footer"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>

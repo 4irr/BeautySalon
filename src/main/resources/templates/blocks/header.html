@@ -1,0 +1,58 @@
+<div id="header" th:fragment="header">
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-start">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/home" class="nav-link px-0 link-secondary">Главная</a></li>
+                    <li><a href="/services" class="nav-link px-4 link-secondary">Каталог услуг</a></li>
+                    <li><a href="/masters" class="nav-link px-0 link-secondary">Мастера</a></li>
+                    <li><a href="/contacts" class="nav-link px-4 link-secondary">Контакты</a></li>
+                </ul>
+
+                <form action="/search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" name="value" class="form-control" placeholder="Поиск..." autocomplete="off" aria-label="Search">
+                </form>
+                <div th:if="${user==null}">
+                    <form id="log-in" th:action="@{/login}">
+                        <button type="submit">Войти <i class='bx bx-log-in'></i></button>
+                    </form>
+                </div>
+                <div th:if="${user}" class="dropdown text-end">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img th:src="@{/img/user.png}" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" style="">
+                        <li th:if="${user.getAuthorities().toString().equals('[ROLE_USER]')}" style="padding-left: 15px">Клиент</li>
+                        <li th:if="${user.getAuthorities().toString().equals('[ROLE_MASTER]')}" style="padding-left: 15px">Мастер</li>
+                        <li th:if="${user.getAuthorities().toString().equals('[ROLE_ADMIN]')}" style="padding-left: 15px">Администратор</li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/profile">Мой профиль</a></li>
+                        <li th:if="${user.getAuthorities().toString().equals('[ROLE_ADMIN]')}"><a class="dropdown-item" href="/administration">Администрирование</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><form id="out" class="dropdown-item" method="POST" th:action="@{/logout}">
+                            <button type="submit">Выход <i class='bx bx-log-out'></i></button>
+                        </form></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="p-3 mb-3 border-bottom">
+        <div class="container d-flex justify-content-between">
+            <div class="mode" style="font-size: 12px">
+                <h5>Режим работы</h5>
+                <p style="margin-bottom: 4px">Пн-Сб – 8.00-21.00</p>
+                <p>Вс – 9.00-21.00.</p>
+            </div>
+            <div class="logo text-center" style="letter-spacing: 3px">
+                <h2>Beauti</h2>
+                <h3>мания</h3>
+            </div>
+            <div class="adress" style="font-size: 12px">
+                <h5>Адрес салона</h5>
+                <p style="margin-bottom: 4px">Минск,</p>
+                <p>Сторожевская, 6</p>
+            </div>
+        </div>
+    </div>
+</div>
